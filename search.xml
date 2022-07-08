@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[这是测试代码高亮的]]></title>
-      <url>/2022/07/05/test3_code/</url>
+      <url>/articles/%E8%BF%99%E6%98%AF%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E7%9A%84testCODE/</url>
       <content type="html"><![CDATA[<ul>
 <li>不用管我<ul>
 <li>也不用管我<ul>
@@ -27,7 +27,7 @@
     
     <entry>
       <title><![CDATA[这是一个测试文档]]></title>
-      <url>/2022/07/05/test/</url>
+      <url>/articles/%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3testTXT/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start<img src="/.193//2022-07-08-00-25-01.png"></h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -41,7 +41,12 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<p><img src="/.193//../../img/posts_img/test/2022-07-08-00-29-11.png"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"><br><img src="/.193//../../img/posts_img/test/2022-07-08-00-29-11.png"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"><br><img src="/.193//../../img/posts_img/test/2022-07-08-00-29-11.png"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"></p>
+<!-- ![](../../../img/posts_img/test/2022-07-08-00-29-11.png) -->
+<p><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"></p>
+<!-- ![](../../../img/posts_img/test/2022-07-08-00-29-11.png) -->
+<p><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"></p>
+<!-- ![](../../../img/posts_img/test/2022-07-08-00-29-11.png) -->
+<p><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"><br><img src="/.193//../../img/posts_img/test/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%BC%9ALogo.jpg"></p>
 ]]></content>
       
         <categories>
