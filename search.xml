@@ -3,106 +3,359 @@
   
     
     <entry>
+      <title><![CDATA[什么是算法？]]></title>
+      <url>/articles/%E4%BB%80%E4%B9%88%E6%98%AF%E7%AE%97%E6%B3%95%EF%BC%9F/</url>
+      <content type="html"><![CDATA[<!-- <font size=4></font> -->
+<h1 id="定义">定义</h1>
+<ul>
+<li><font size="5"><strong>算法（Algorithm）</strong></font> <font size="4">
+<ul>
+<li>一个有限指令集</li>
+<li>接受一些输入（有些情况下不需要输入）</li>
+<li>产生输出</li>
+<li>一定在有限步骤之后终止</li>
+<li>每一条指令必须
+<ul>
+<li>有充分明确的目标，不可以有歧义</li>
+<li>计算机能处理的范围之内</li>
+<li>描述不应该依赖于任何一种计算机语言以及具体的实现手段</li>
+</ul></li>
+</ul></font></li>
+</ul>
+<blockquote>
+<p>一个算法是由控制结构（顺序、分支和循环）和原操作（指固有数据类型的操作）构成的，则算法时间取决于两者的综合效果。为了比较同一个问题的不同算法，通常的做法：从算法中选取一种对于研究的问题(或算法类型)来说是基本操作的原操作,以该操作的重复执行的次术作为算法的时间量度。
+</p>
+</blockquote>
+<h1 id="什么是好的算法">什么是好的算法?</h1>
+<p><font size="4">虽然计算机能快速的完成运算处理，但实际上，它也需要根据输入数据的大小和算法效率来消耗一定的处理器资源。要想编写出能高效运行的程序，我们就需要考虑到算法的效率。</font></p>
+<ul>
+<li><font size="5">算法的效率主要由以下两个复杂度来评估</font>
+<ul>
+<li><font size="4">时间复杂度<span class="math inline">\(T(n)\)</span></font>
+<ul>
+<li>根据算法写成的程序在执行的时候<strong>耗费时间的长度</strong>。这个长度往往也与输入数据的规模有关。时间复杂度过高的低效可能导致我们有生之年都等不到运行结果。</li>
+</ul></li>
+<li><font size="4">空间复杂度<span class="math inline">\(S(n)\)</span></font>
+<ul>
+<li>根据算法写成的程序在执行的时候<strong>占用存储单元的长度</strong>。这个长度往往与输入数据的规模有关。空间复杂度过高的算法可能导致使用的内存超限,造成程序非正常中断。</li>
+</ul></li>
+</ul>
+<hr></li>
+<li><font size="4">在分析一般算法的效率时,我们经常关注下面两种复杂度</font>
+<ul>
+<li><font size="4">最坏情况复杂度<span class="math inline">\(T_w(n)\)</span></font></li>
+<li><font size="4">平均复杂度<span class="math inline">\(T_a(n)\)</span></font></li>
+</ul>
+<font size="4">
+<center>
+<span class="math inline">\(T_a(n)\leq T_w(n)\)</span>
+</center>
+</font></li>
+</ul>
+<blockquote>
+<p>设计算法时,一般要先考虑系统环境,然后权衡时间复杂度和空间复杂度,选取一个平衡点。不过,时间复杂度比空间复杂度更容易产生问题,因为算法研究的主要也是时间复杂度,不特别说明的情况下,复杂度就是指时间复杂度。</p>
+</blockquote>
+<h1 id="时间复杂度">时间复杂度</h1>
+<ul>
+<li><p><font size="4"><strong>时间频度</strong></font></p>
+<p>一个算法执行所耗费的时间，从理论上是不能算出来的，必须上机运行测试才能知道。但我们不可能也没有必要对每个算法都上机测试，只需知道哪个算法花费的时间多，哪个算法花费的时间少就可以了。并且一个算法花费的时间与算法中语句的执行次数成正比例，哪个算法中语句执行次数多，它花费时间就多。<strong>一个算法中的语句执行次数称为语句频度或时间频度</strong>。记为<span class="math inline">\(T(n)\)</span>。</p></li>
+<li><p><font size="4"><strong>时间复杂度</strong></font></p>
+<p>在刚才提到的时间频度中，<span class="math inline">\(n\)</span>称为问题的规模，当<span class="math inline">\(n\)</span>不断变化时，时间频度<span class="math inline">\(T(n)\)</span>也会不断变化。但有时我们想知道它变化时呈现什么规律。为此，我们引入时间复杂度概念。
+一般情况下，算法中基本操作重复执行的次数是问题规模<span class="math inline">\(n\)</span>的某个函数，用<span class="math inline">\(T(n)\)</span>表示，若有某个辅助函数<span class="math inline">\(f(n)\)</span>,使得当<span class="math inline">\(n\)</span>趋近于无穷大时，<span class="math inline">\(T(n)/f(n)\)</span>的极限值为不等于零的常数，则称<span class="math inline">\(f(n)\)</span>是<span class="math inline">\(T(n)\)</span>的同数量级函数。记作<span class="math inline">\(T(n)=O(f(n))\)</span>，称<span class="math inline">\(O(f(n))\)</span>
+为算法的<strong>渐进时间复杂度</strong>，简称<strong>时间复杂度</strong>。</p></li>
+</ul>
+<p>在计算算法复杂度时，一般只用到大<span class="math inline">\(O\)</span>符号。</p>
+<p>计算时间复杂度的时候，一般都是取尽可能简单的函数。例如：<span class="math inline">\(O(2n^2+n +1)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(O
+(3n^2+n+3)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(O (7n^2+n)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(O(n^2)\)</span>,一般只用<span class="math inline">\(O(n^2)\)</span>表示就可以了。</p>
+<p>注意到大<span class="math inline">\(O\)</span>符号里隐藏着一个常数<span class="math inline">\(C\)</span>，所以<span class="math inline">\(f(n)\)</span>里一般不加系数。如果把<span class="math inline">\(T(n)\)</span>当做一棵树，那么<span class="math inline">\(O(f(n))\)</span>所表达的就是树干，只关心其中的主干，其他的细枝末节全都抛弃不管。</p>
+<p>在各种不同算法中，<strong>若算法中语句执行次数为一个常数，则时间复杂度为<span class="math inline">\(O(1)\)</span></strong>。另外，在时间频度不相同时，时间复杂度有可能相同，如<span class="math inline">\(T(n)=n^2+3n+4\)</span>与<span class="math inline">\(T(n)=4n^2+2n+1\)</span>它们的频度不同，但时间复杂度相同，都为<span class="math inline">\(O(n^2)\)</span>。</p>
+<p><font size="4"><strong>按数量级递增排列，常见的时间复杂度有：</strong></font></p>
+<ul>
+<li><p>常数阶<span class="math inline">\(O(1)\)</span></p></li>
+<li><p>对数阶<span class="math inline">\(O(log_2n)\)</span></p></li>
+<li><p>线性阶<span class="math inline">\(O(n)\)</span></p></li>
+<li><p>线性对数阶<span class="math inline">\(O(nlog_2n)\)</span></p></li>
+<li><p>平方阶<span class="math inline">\(O(n^2)\)</span></p></li>
+<li><p>立方阶<span class="math inline">\(O(n^3)\)</span></p>
+<p>...</p></li>
+<li><p>k次方阶<span class="math inline">\(O(n^k)\)</span></p></li>
+<li><p>指数阶<span class="math inline">\(O(2^n)\)</span></p></li>
+<li><p>阶乘阶<span class="math inline">\(O(n!)\)</span></p></li>
+</ul>
+<p>随着问题规模<span class="math inline">\(n\)</span>的不断增大，上述时间复杂度不断增大，算法的执行效率越低。</p>
+<ul>
+<li><font size="4"><strong>时间复杂度的增长趋势</strong></font> <img src="/.193//../../img/posts_img/什么是算法/时间复杂度.png"></li>
+</ul>
+<font>
+<center>
+<span class="math inline">\(由此图可见，我们应该尽可能选用多项式阶O(n^k)甚至更优O(nlog_2n)的算法，而不希望用指数阶的算法\)</span>
+</center>
+<p></p></font><p></p>
+<ul>
+<li><p><font size="4"><strong>复杂度的比较</strong></font></p>
+<table>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 16%">
+<col style="width: 11%">
+<col style="width: 15%">
+<col style="width: 13%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(n\)</span></th>
+<th><span class="math inline">\(logn\)</span></th>
+<th><span class="math inline">\(\sqrt{n}\)</span></th>
+<th><span class="math inline">\(nlogn\)</span></th>
+<th><span class="math inline">\(n^2\)</span></th>
+<th><span class="math inline">\(2^n\)</span></th>
+<th><span class="math inline">\(n!\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(5\)</span></td>
+<td><span class="math inline">\(2\)</span></td>
+<td><span class="math inline">\(2\)</span></td>
+<td><span class="math inline">\(10\)</span></td>
+<td><span class="math inline">\(25\)</span></td>
+<td><span class="math inline">\(32\)</span></td>
+<td><span class="math inline">\(120\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(10\)</span></td>
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(30\)</span></td>
+<td><span class="math inline">\(100\)</span></td>
+<td><span class="math inline">\(1024\)</span></td>
+<td><span class="math inline">\(3628800\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(50\)</span></td>
+<td><span class="math inline">\(5\)</span></td>
+<td><span class="math inline">\(7\)</span></td>
+<td><span class="math inline">\(250\)</span></td>
+<td><span class="math inline">\(2500\)</span></td>
+<td><span class="math inline">\(10^{15}\)</span></td>
+<td><span class="math inline">\(3.0*10^{64}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(100\)</span></td>
+<td><span class="math inline">\(6\)</span></td>
+<td><span class="math inline">\(10\)</span></td>
+<td><span class="math inline">\(600\)</span></td>
+<td><span class="math inline">\(10000\)</span></td>
+<td><span class="math inline">\(10^{30}\)</span></td>
+<td><span class="math inline">\(9.3*10^{157}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(1000\)</span></td>
+<td><span class="math inline">\(9\)</span></td>
+<td><span class="math inline">\(31\)</span></td>
+<td><span class="math inline">\(9000\)</span></td>
+<td><span class="math inline">\(1000000\)</span></td>
+<td><span class="math inline">\(10^{300}\)</span></td>
+<td><span class="math inline">\(4.0*10^{2567}\)</span></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p><strong>常见的算法时间复杂度由小到大依次为</strong>：<span class="math inline">\(Ο(1)＜Ο(log_2n)＜Ο(n)＜Ο(nlog_2n)＜Ο(n^2)＜Ο(n^3)＜…＜Ο(2^n)＜Ο(n!)\)</span></p>
+<blockquote>
+<p>一般情况下，对一个问题（或一类算法）只需选择一种基本操作来讨论算法的时间复杂度即可，有时也需要同时考虑几种基本操作，甚至可以对不同的操作赋予不同的权值，以反映执行不同操作所需的相对时间，这种做法便于综合比较解决同一问题的两种完全不同的算法。</p>
+</blockquote>
+<ul>
+<li><font size="4"><strong>分析算法的时间复杂度</strong></font>
+<ul>
+<li>若两段算法分别有复杂度<span class="math inline">\(T_1(n)=O(f_1(n))和T_2(n)=O(f_2(n))\)</span>，则
+<ul>
+<li><span class="math inline">\(T_1(n)+T_2(n)=max(O(f_1(n)),O(f_2(n)))\)</span></li>
+<li><span class="math inline">\(T_1(n)*T_2(n)=O(f_1(n)*f_2(n))\)</span></li>
+</ul></li>
+<li>若<span class="math inline">\(T(n)\)</span>是关于<span class="math inline">\(n\)</span>的<span class="math inline">\(k\)</span>阶多项式，那么<span class="math inline">\(T(n)=O(n^k)\)</span></li>
+<li>一个<span class="math inline">\(for\)</span>循环的时间复杂度等于循环次数<span class="math inline">\(*\)</span>循环体代码的复杂度</li>
+<li><span class="math inline">\(if-else\)</span>结构的复杂度取决于<span class="math inline">\(if\)</span>的条件判断复杂度和两个分支部分的复杂度，总体复杂度取三者中最大</li>
+</ul></li>
+</ul>
+<h1 id="空间复杂度">空间复杂度</h1>
+<ul>
+<li><font size="4"><strong>空间复杂度</strong><span class="math inline">\((Space Complexity)\)</span></font>
+<ul>
+<li>类似于时间复杂度的讨论，一个算法的空间复杂度<span class="math inline">\((Space
+Complexity)S(n)\)</span>定义为该算法所耗费的存储空间，它也是问题规模<span class="math inline">\(n\)</span>的函数。<strong>渐近空间复杂度</strong>也常常简称为<strong>空间复杂度</strong>。</li>
+<li><strong>空间复杂度</strong>是对一个算法在运行过程中临时占用存储空间大小的量度。一个算法在计算机存储器上所占用的存储空间，包括<strong>存储算法本身所占用的存储空间</strong>，<strong>算法的输入输出数据所占用的存储空间</strong>和<strong>算法在运行过程中临时占用的存储空间</strong>这三个方面。算法的输入输出数据所占用的存储空间是由要解决的问题决定的，是通过参数表由调用函数传递而来的，它不随本算法的不同而改变。存储算法本身所占用的存储空间与算法书写的长短成正比，要压缩这方面的存储空间，就必须编写出较短的算法。算法在运行过程中临时占用的存储空间随算法的不同而异，有的算法只需要占用少量的临时工作单元，而且不随问题规模的大小而改变，我们称这种算法是“就地"进行的，是节省存储的算法。有的算法需要占用的临时工作单元数与解决问题的规模<span class="math inline">\(n\)</span>有关，它随着<span class="math inline">\(n\)</span>的增大而增大，当<span class="math inline">\(n\)</span>较大时，将占用较多的存储单元。</li>
+</ul>
+<hr></li>
+<li>当一个算法的空间复杂度为一个常量，即不随被处理数据量<span class="math inline">\(n\)</span>的大小而改变时，可表示为<span class="math inline">\(O(1)\)</span></li>
+<li>当一个算法的空间复杂度与以<span class="math inline">\(2\)</span>为底的<span class="math inline">\(n\)</span>的对数成正比时，可表示为<span class="math inline">\(O(log_2n)\)</span></li>
+<li>当一个算法的空间复杂度与<span class="math inline">\(n\)</span>成线性比例关系时，可表示为<span class="math inline">\(O(n)\)</span></li>
+<li>若形参为数组，则只需要为它分配一个存储由实参传送来的一个地址指针的空间，即一个机器字长空间</li>
+<li>若形参为引用方式，则也只需要为其分配存储一个地址的空间，用它来存储对应实参变量的地址，以便由系统自动引用实参变量</li>
+</ul>
+<h1 id="常用的排序算法的时间复杂度和空间复杂度">常用的排序算法的时间复杂度和空间复杂度</h1>
+<p><img src="/.193//../../img/posts_img/什么是算法/常用的排序算法的时间复杂度和空间复杂度.png"></p>
+<p>参考链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/zolalad/article/details/11848739?spm">算法的时间复杂度和空间复杂度-总结</a></li>
+<li><a href="https://liuwangshu.blog.csdn.net/article/details/54882603?spm">算法（一）时间复杂度</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 算法杂谈 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[什么是数据结构？]]></title>
+      <url>/articles/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9F/</url>
+      <content type="html"><![CDATA[<!-- <font size=4> </font> -->
+<h1 id="所以什么是数据结构">所以什么是数据结构？</h1>
+<ul>
+<li><font size="4"><strong>数据对象</strong>在计算机中的组织方式</font>
+<ul>
+<li>逻辑结构</li>
+<li>物理存储结构</li>
+</ul></li>
+<li><font size="4">数据对象必定与一系列加在其上的<strong>操作</strong>相关联</font></li>
+<li><font size="4">完成这些操作所用的方法就是<strong>算法</strong></font></li>
+</ul>
+<h1 id="抽象数据类型abstract-data-type">抽象数据类型（Abstract Data
+Type）</h1>
+<ul>
+<li><font size="4">数据类型</font>
+<ul>
+<li>数据对象集</li>
+<li>数据集合相关联的操作集</li>
+</ul></li>
+<li><font size="4">抽象: 描述数据类型的方法不依赖于具体实现</font>
+<ul>
+<li>与存放数据的机器无关</li>
+<li>与数据存储的物理结构无关</li>
+<li>与实现操作的算法和编程语言均无关 &gt;只描述 数据对象集 和 相关操作集
+"<strong>是什么</strong>",并不涉及"<strong>如何做到</strong>"的问题</li>
+</ul></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据结构 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[并查集]]></title>
       <url>/articles/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
       <content type="html"><![CDATA[<blockquote>
 <p><font size="3">并查集，在一些有N个元素的集合应用问题中，我们通常是在<strong>开始时让每个元素构成一个单元素的集合</strong>，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。</font></p>
 </blockquote>
-<h2 id="并查集最常用的两种操作"><a href="#并查集最常用的两种操作" class="headerlink" title="并查集最常用的两种操作"></a>并查集最常用的两种操作</h2><pre><code>- 合并（Union）:把两个不相交的集合合并为一个集合
-- 查询（Find）：查询两个元素是否在同一个集合中
-</code></pre>
+<h2 id="并查集最常用的两种操作">并查集最常用的两种操作</h2>
+<pre><code>- 合并（Union）:把两个不相交的集合合并为一个集合
+- 查询（Find）：查询两个元素是否在同一个集合中</code></pre>
 <p><font size="4">下面我们通过一道模板题来讲解<strong>并查集</strong>的用法</font></p>
 <blockquote>
-<p><font size="3"><a href="https://www.luogu.com.cn/problem/P1551">（洛谷P1551）亲戚</a></font><br>题目背景<br>    若某个家族人员过于庞大，要判断两个是否是亲戚，确实还很不容易，现在给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。<br>题目描述<br>    规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。<br>输入格式<br>    第一行：三个整数n,m,p，（n&lt;&#x3D;5000,m&lt;&#x3D;5000,p&lt;&#x3D;5000），分别表示有n个人，m个亲戚关系，询问p对亲戚关系。<br>    以下m行：每行两个数Mi，Mj，1&lt;&#x3D;Mi，Mj&lt;&#x3D;N，表示Mi和Mj具有亲戚关系。<br>    接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。<br>输出格式<br>    P行，每行一个’Yes’或’No’。表示第i个询问的答案为“具有”或“不具有”亲戚关系。</p>
+<p><font size="3"><a href="https://www.luogu.com.cn/problem/P1551">（洛谷P1551）亲戚</a></font>
+题目背景
+若某个家族人员过于庞大，要判断两个是否是亲戚，确实还很不容易，现在给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。
+题目描述
+规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。
+输入格式
+第一行：三个整数n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000），分别表示有n个人，m个亲戚关系，询问p对亲戚关系。
+以下m行：每行两个数Mi，Mj，1&lt;=Mi，Mj&lt;=N，表示Mi和Mj具有亲戚关系。
+接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。 输出格式
+P行，每行一个’Yes’或’No’。表示第i个询问的答案为“具有”或“不具有”亲戚关系。</p>
 </blockquote>
 <ul>
-<li><p>样例输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">6 5 3</span><br><span class="line">1 2</span><br><span class="line">1 5</span><br><span class="line">3 4</span><br><span class="line">5 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br><span class="line">2 3</span><br><span class="line">5 6</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>样例输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">Yes</span><br><span class="line">No</span><br></pre></td></tr></table></figure></li>
+<li><p>样例输入 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">6 5 3</span><br><span class="line">1 2</span><br><span class="line">1 5</span><br><span class="line">3 4</span><br><span class="line">5 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br><span class="line">2 3</span><br><span class="line">5 6</span><br></pre></td></tr></table></figure></p></li>
+<li><p>样例输出 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">Yes</span><br><span class="line">No</span><br></pre></td></tr></table></figure></p></li>
 </ul>
-<h2 id="并查集初始化"><a href="#并查集初始化" class="headerlink" title="并查集初始化"></a>并查集初始化</h2><p><font size="4">并查集初始化的重要思想在于，用<strong>集合中的一个元素代表集合</strong></font></p>
+<h2 id="并查集初始化">并查集初始化</h2>
+<p><font size="4">并查集初始化的重要思想在于，用<strong>集合中的一个元素代表集合</strong></font></p>
 <p><font size="3">并查集初始化，将每个元素的父亲节点设为自己：</font></p>
-<p><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81.jpg"></p>
+<p><img src="/.193//../../img/posts_img/并查集/初始状态.jpg"></p>
 <ul>
-<li><font size="3">初始状态</font><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">    t[i] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<font size="3">或者</font><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;   <span class="comment">//结构体实现</span></span><br><span class="line">    t[i].date = i;          <span class="comment">//该集合的数据</span></span><br><span class="line">    t[i].rank = <span class="number">0</span>;          <span class="comment">//该集合的秩</span></span><br><span class="line">    t[i].parent = i;   <span class="comment">//该集合的父亲节点   </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><font size="3">初始状态</font> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">    t[i] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <font size="3">或者</font>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;   <span class="comment">//结构体实现</span></span><br><span class="line">    t[i].date = i;          <span class="comment">//该集合的数据</span></span><br><span class="line">    t[i].rank = <span class="number">0</span>;          <span class="comment">//该集合的秩</span></span><br><span class="line">    t[i].parent = i;   <span class="comment">//该集合的父亲节点   </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="合并操作"><a href="#合并操作" class="headerlink" title="合并操作"></a>合并操作</h2><p><font size="4">接下来就是喜闻乐见的合并操作了</font></p>
-<blockquote>
-<p>tips：在普通的集合合并中，谁当老大（父亲节点）并不重要，只需要有一个元素能够代表整个集合就可以了</p>
-</blockquote>
+<h2 id="合并操作">合并操作</h2>
+<p><font size="4">接下来就是喜闻乐见的合并操作了</font>
+&gt;tips：在普通的集合合并中，谁当老大（父亲节点）并不重要，只需要有一个元素能够代表整个集合就可以了</p>
 <ul>
-<li><p><font size="3">1、3合并:</font><br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/1%E3%80%813%E5%90%88%E5%B9%B6.jpg"></p>
-</li>
-<li><p><font size="3">1、2或者2、3合并:</font><br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/1%E3%80%812%E6%88%96%E8%80%852%E3%80%813%E5%90%88%E5%B9%B6.jpg"></p>
-</li>
-<li><p><font size="3">4、5、6合并:</font><br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/4%E3%80%815%E3%80%816%E5%90%88%E5%B9%B6.jpg"></p>
-</li>
-<li><p><font size="3">1、4合并:</font><br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/1%E3%80%814%E5%90%88%E5%B9%B6.jpg"></p>
-</li>
-<li><p><font size="3">树状结构:</font><br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84.jpg"></p>
-</li>
+<li><p><font size="3">1、3合并:</font> <img src="/.193//../../img/posts_img/并查集/1、3合并.jpg"></p></li>
+<li><p><font size="3">1、2或者2、3合并:</font> <img src="/.193//../../img/posts_img/并查集/1、2或者2、3合并.jpg"></p></li>
+<li><p><font size="3">4、5、6合并:</font> <img src="/.193//../../img/posts_img/并查集/4、5、6合并.jpg"></p></li>
+<li><p><font size="3">1、4合并:</font> <img src="/.193//../../img/posts_img/并查集/1、4合并.jpg"></p></li>
+<li><p><font size="3">树状结构:</font> <img src="/.193//../../img/posts_img/并查集/树状结构.jpg"></p></li>
 </ul>
 <p><font size="4">这样的结构里面，我们要<strong>寻找一个集合的代表元素（父亲节点），只需要通过集合中任意一个元素，然后一层一层往上访问父节点，直达树的根节点（橙色的圆）即可</strong>。根节点的父节点就是他自己。<del>（我的老大是我自己）</del></font></p>
-<p><font size="3">通过这种方法我们可以实现代码（最简单的并查集代码）:</font></p>
-<ul>
-<li><p><font size="3">查询:</font></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(t[x]!=x)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Find_Set</span>(t[x]);     </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><font size="3">或者</font></p>
+<p><font size="3">通过这种方法我们可以实现代码（最简单的并查集代码）:</font>
+- <font size="3">查询:</font> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(t[x]!=x)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Find_Set</span>(t[x]);     </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <font size="3">或者</font>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(USFTree t[],<span class="type">int</span> x)</span></span>&#123;    <span class="comment">//结构体实现</span></span><br><span class="line">    <span class="keyword">if</span>(t[x].parent != x)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Find_Set</span>(t,t[x].parent);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><font size="3"><strong>用递归的的方法查询代表元素（父亲节点），要判断两个元素是否属于同一个集合，看他们的父亲节点是否同一个即可</strong>:</font></p>
-</li>
-<li><p>合并:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">    x = <span class="built_in">Find_Set</span>(x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(y);</span><br><span class="line">    t[x] = y;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><font size="3">或者</font></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(USFTree t[],<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;    <span class="comment">//结构体实现</span></span><br><span class="line">    x = <span class="built_in">Find_Set</span>(t,x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(t,y);</span><br><span class="line">    t[x].parent = y;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><font size="3"><strong>合并操作只需要找到两个集合的代表元素（父亲节点），把前者的父亲节点设为后者即可（此方法并不是最优化合理的方法，下文给出更合理的方法）</strong>:</font></p>
-</li>
+<font size="3"><strong>用递归的的方法查询代表元素（父亲节点），要判断两个元素是否属于同一个集合，看他们的父亲节点是否同一个即可</strong>:</font></p>
+<ul>
+<li>合并: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">    x = <span class="built_in">Find_Set</span>(x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(y);</span><br><span class="line">    t[x] = y;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <font size="3">或者</font> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(USFTree t[],<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;    <span class="comment">//结构体实现</span></span><br><span class="line">    x = <span class="built_in">Find_Set</span>(t,x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(t,y);</span><br><span class="line">    t[x].parent = y;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font size="3"><strong>合并操作只需要找到两个集合的代表元素（父亲节点），把前者的父亲节点设为后者即可（此方法并不是最优化合理的方法，下文给出更合理的方法）</strong>:</font></li>
 </ul>
-<h2 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h2><p><font size="3">上面最简单的并查集方法效率是比较低的，比如这个集合:</font></p>
-<p><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A91.jpg"></p>
+<h2 id="路径压缩">路径压缩</h2>
+<p><font size="3">上面最简单的并查集方法效率是比较低的，比如这个集合:</font></p>
+<p><img src="/.193//../../img/posts_img/并查集/路径压缩1.jpg"></p>
 <p><font size="3">随着整个链表越来越长，我们查询集合代表元素（父亲节点）就会越来越困难，要做的操作次数越来越多，从而导致效率变低。</font></p>
-<p><font size="3">这个时候我们只需要在<strong>查询父节点的时候</strong>让集合的每个元素的父节点都指向集合的祖先节点（代表元素）<strong>大概率就类似菊花图一样的结构</strong></font>	</p>
+<p><font size="3">这个时候我们只需要在<strong>查询父节点的时候</strong>让集合的每个元素的父节点都指向集合的祖先节点（代表元素）<strong>大概率就类似菊花图一样的结构</strong></font></p>
 <ul>
-<li><font size="3">代码实现:</font>	<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(t[x]!=x)&#123;</span><br><span class="line">        <span class="keyword">return</span> t[x] = <span class="built_in">Find_Set</span>(t[x]); <span class="comment">//按祖先结点维护</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<font size="3">或者</font><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(USFTree t[],<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t[x].parent != x)&#123;</span><br><span class="line">        t[x].parent = <span class="built_in">Find_Set</span>(t,t[x].parent)；</span><br><span class="line">        <span class="keyword">return</span> t[x].parent; <span class="comment">//按祖先结点维护、结构体实现</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<font size="3">通常简写一行</font><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> t[x]==x ? x : (t[x]=<span class="built_in">Find_Set</span>(t[x]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><font size="3">要注意赋值运算符：“&#x3D;” 的优先级没有三元运算符：”?” 高，所以这里要加括号</font></p>
-</blockquote>
-</li>
+<li><font size="3">代码实现:</font> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(t[x]!=x)&#123;</span><br><span class="line">        <span class="keyword">return</span> t[x] = <span class="built_in">Find_Set</span>(t[x]); <span class="comment">//按祖先结点维护</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <font size="3">或者</font>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(USFTree t[],<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t[x].parent != x)&#123;</span><br><span class="line">        t[x].parent = <span class="built_in">Find_Set</span>(t,t[x].parent)；</span><br><span class="line">        <span class="keyword">return</span> t[x].parent; <span class="comment">//按祖先结点维护、结构体实现</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <font size="3">通常简写一行</font> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> t[x]==x ? x : (t[x]=<span class="built_in">Find_Set</span>(t[x]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+&gt;<font size="3">要注意赋值运算符：“=” 的优先级没有三元运算符："?"
+高，所以这里要加括号</font></li>
 </ul>
-<p><font size="3">为什么要用三元运算符而不用 if 语句?</font><br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6.png"></p>
-<h2 id="按秩合并"><a href="#按秩合并" class="headerlink" title="按秩合并"></a>按秩合并</h2><p><font size="3">由于路径压缩只会在查询操作的时候进行，并且也只是压缩一条路径，所以并查集最终的结构可能还是会很复杂</font></p>
-<p><font size="3">例:</font></p>
-<blockquote>
-<p><font size="3">我现在有两个集合，一个高度比较矮，一个高度比较高，我需要将他们合并</font></p>
-</blockquote>
-<ul>
-<li>合并前:<br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E5%90%88%E5%B9%B6%E5%89%8D.jpg"></li>
-<li>合并后:<br><img src="/.193//../../img/posts_img/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E5%90%88%E5%B9%B6%E5%90%8E.jpg"></li>
-</ul>
+<p><font size="3">为什么要用三元运算符而不用 if 语句?</font> <img src="/.193//../../img/posts_img/并查集/三元运算符.png"></p>
+<h2 id="按秩合并">按秩合并</h2>
+<p><font size="3">由于路径压缩只会在查询操作的时候进行，并且也只是压缩一条路径，所以并查集最终的结构可能还是会很复杂</font></p>
+<p><font size="3">例:</font>
+&gt;<font size="3">我现在有两个集合，一个高度比较矮，一个高度比较高，我需要将他们合并</font>
+- 合并前: <img src="/.193//../../img/posts_img/并查集/合并前.jpg"> -
+合并后: <img src="/.193//../../img/posts_img/并查集/合并后.jpg"></p>
 <span id="more"></span>
-
 <p><font size="3"><strong>很明显，左边的集合树的高度明显比右边的高，进行查询操作的时候效率肯定会更慢一些</strong></font></p>
 <p><font size="3"><strong>因此，得出结论，我们应该把简单的树往复杂的树上合并，而并不是相反，这样我们查询集合元素的父亲节点时访问的层数可以更少而不是更多</strong></font></p>
-<p><font size="3"><strong>用一个 rank[] 数组记录每个集合的秩（树的高度），开始先将所有集合的秩初始化为1，就跟初始化并查集一样。合并的时候比较两个集合的秩，将rank较小的往rank较大的身上合并</strong></font></p>
+<p><font size="3"><strong>用一个 rank[]
+数组记录每个集合的秩（树的高度），开始先将所有集合的秩初始化为1，就跟初始化并查集一样。合并的时候比较两个集合的秩，将rank较小的往rank较大的身上合并</strong></font></p>
 <ul>
-<li>代码实现:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">    x = <span class="built_in">Find_Set</span>(x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(y);</span><br><span class="line">    <span class="keyword">if</span>(x==y)&#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 如果两个元素的祖先节点相同，说明在同一个集合中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(rankSiz[x]&gt;rankSiz[y])&#123; <span class="comment">//按秩维护</span></span><br><span class="line">        <span class="built_in">swap</span>(x,y); <span class="comment">// 默认x元素的rank比y元素的rank小反之则交换x与y</span></span><br><span class="line">    &#125;</span><br><span class="line">    t[x] = y;</span><br><span class="line">    rankSiz[y] += rankSiz[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<font size="3">或者</font><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(USFTree t[],<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;    <span class="comment">//结构体实现</span></span><br><span class="line">    x = <span class="built_in">Find_Set</span>(t,x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(t,y);</span><br><span class="line">    <span class="keyword">if</span>(x==y) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(t[x].rank&gt;=t[y].rank)&#123;</span><br><span class="line">        t[y].parent = x;</span><br><span class="line">        t[x].rank++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        t[x].parent = y;</span><br><span class="line">        t[y].rank++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>代码实现: <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">    x = <span class="built_in">Find_Set</span>(x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(y);</span><br><span class="line">    <span class="keyword">if</span>(x==y)&#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 如果两个元素的祖先节点相同，说明在同一个集合中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(rankSiz[x]&gt;rankSiz[y])&#123; <span class="comment">//按秩维护</span></span><br><span class="line">        <span class="built_in">swap</span>(x,y); <span class="comment">// 默认x元素的rank比y元素的rank小反之则交换x与y</span></span><br><span class="line">    &#125;</span><br><span class="line">    t[x] = y;</span><br><span class="line">    rankSiz[y] += rankSiz[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <font size="3">或者</font>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union_Set</span><span class="params">(USFTree t[],<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;    <span class="comment">//结构体实现</span></span><br><span class="line">    x = <span class="built_in">Find_Set</span>(t,x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(t,y);</span><br><span class="line">    <span class="keyword">if</span>(x==y) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(t[x].rank&gt;=t[y].rank)&#123;</span><br><span class="line">        t[y].parent = x;</span><br><span class="line">        t[x].rank++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        t[x].parent = y;</span><br><span class="line">        t[y].rank++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <!-- more -->
-
-
-
-<h2 id="（洛谷P1551）亲戚AC代码"><a href="#（洛谷P1551）亲戚AC代码" class="headerlink" title="（洛谷P1551）亲戚AC代码"></a>（洛谷P1551）亲戚AC代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">ll n,m,p,x,y;</span><br><span class="line">ll t[<span class="number">20000</span>],rankSiz[<span class="number">20000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> t[x]==x ? x : (t[x]=<span class="built_in">Find_Set</span>(t[x]));</span><br><span class="line">    <span class="comment">// if(t[x]!=x)&#123;</span></span><br><span class="line">    <span class="comment">//     return t[x] = Find_Set(t[x]); //按祖先结点维护</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// else&#123;</span></span><br><span class="line">    <span class="comment">//     return x;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Uniom_Set</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">    x = <span class="built_in">Find_Set</span>(x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(y);</span><br><span class="line">    <span class="keyword">if</span>(x==y)&#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 如果两个元素的祖先节点相同，说明在同一个集合中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(rankSiz[x]&gt;rankSiz[y])&#123; <span class="comment">//按秩维护</span></span><br><span class="line">        <span class="built_in">swap</span>(x,y); <span class="comment">// 默认x元素的rank比y元素的rank小反之则交换x与y</span></span><br><span class="line">    &#125;</span><br><span class="line">    t[x] = y;</span><br><span class="line">    rankSiz[y] += rankSiz[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        t[i] = i;</span><br><span class="line">        rankSiz[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;++i)&#123;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        <span class="built_in">Uniom_Set</span>(x,y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= p;++i)&#123;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        <span class="built_in">Find_Set</span>(x)==<span class="built_in">Find_Set</span>(y) ? cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl : cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="洛谷p1551亲戚ac代码">（洛谷P1551）亲戚AC代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">ll n,m,p,x,y;</span><br><span class="line">ll t[<span class="number">20000</span>],rankSiz[<span class="number">20000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Find_Set</span><span class="params">(ll x)</span></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> t[x]==x ? x : (t[x]=<span class="built_in">Find_Set</span>(t[x]));</span><br><span class="line">    <span class="comment">// if(t[x]!=x)&#123;</span></span><br><span class="line">    <span class="comment">//     return t[x] = Find_Set(t[x]); //按祖先结点维护</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// else&#123;</span></span><br><span class="line">    <span class="comment">//     return x;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Uniom_Set</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">    x = <span class="built_in">Find_Set</span>(x);</span><br><span class="line">    y = <span class="built_in">Find_Set</span>(y);</span><br><span class="line">    <span class="keyword">if</span>(x==y)&#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 如果两个元素的祖先节点相同，说明在同一个集合中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(rankSiz[x]&gt;rankSiz[y])&#123; <span class="comment">//按秩维护</span></span><br><span class="line">        <span class="built_in">swap</span>(x,y); <span class="comment">// 默认x元素的rank比y元素的rank小反之则交换x与y</span></span><br><span class="line">    &#125;</span><br><span class="line">    t[x] = y;</span><br><span class="line">    rankSiz[y] += rankSiz[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">        t[i] = i;</span><br><span class="line">        rankSiz[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;++i)&#123;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        <span class="built_in">Uniom_Set</span>(x,y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= p;++i)&#123;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        <span class="built_in">Find_Set</span>(x)==<span class="built_in">Find_Set</span>(y) ? cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl : cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><font size="5" color="orange"><strong>凡是涉及到元素的分组管理问题，都可以考虑使用并查集进行维护！</strong></font></p>
 <p>参考链接</p>
 <ul>
-<li><a href="https://zhuanlan.zhihu.com/p/93647900">算法学习笔记(1) : 并查集</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/93647900">算法学习笔记(1) :
+并查集</a></li>
 <li><a href="https://blog.csdn.net/dby73/article/details/103206805">if语句和三元运算符哪个效率更高</a></li>
 </ul>
 ]]></content>
