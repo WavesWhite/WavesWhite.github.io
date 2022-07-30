@@ -8,19 +8,43 @@
       <content type="html"><![CDATA[<!-- <font size=4></font> -->
 <h1 id="定义">定义</h1>
 <ul>
-<li><font size="5"><strong>算法（Algorithm）</strong></font> <font size="4">
+<li><p><font size="5"><strong>算法（Algorithm）</strong></font></p>
+<p><font size="4">算法是<strong>解决问题的步骤</strong>，是指解决问题的方案<strong>准确且完整的描述</strong>，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。</font></p>
+<p><font size="4"><strong>算法<span class="math inline">\(+\)</span>数据结构<span class="math inline">\(=\)</span>应用程序</strong></font></p></li>
+<li><p><font size="5"><strong>算法的特征：</strong></font>
+<font size="4"></font></p>
+<ul>
+<li><strong>可行性</strong>
 <ul>
 <li>一个有限指令集</li>
+<li>算法中执行的任何计算步骤都是可以被分解为基本可执行的操作步，即每个计算步都可以在有限的时间内完成（也称有效性）</li>
+</ul></li>
+<li><strong>输入项</strong>
+<ul>
 <li>接受一些输入（有些情况下不需要输入）</li>
+<li>一个算法有0个或多个输入，以刻画运算对象的初始情况，所谓0个输入是指算法本身定出的初始条件</li>
+</ul></li>
+<li><strong>输出项</strong>
+<ul>
 <li>产生输出</li>
+<li>一个算法有一个或多个输出，以反映对输入数据加工后的结果，<del>没有输出的算法是毫无意义的</del></li>
+</ul></li>
+<li><strong>有穷性</strong>
+<ul>
 <li>一定在有限步骤之后终止</li>
-<li>每一条指令必须
+<li>一个算法必须总是在执行有限的步骤后结束，且每一步都必须在有限的时间内完成</li>
+</ul></li>
+<li><strong>确切性</strong>
+<ul>
+<li>每一条指令必须：
 <ul>
 <li>有充分明确的目标，不可以有歧义</li>
 <li>计算机能处理的范围之内</li>
 <li>描述不应该依赖于任何一种计算机语言以及具体的实现手段</li>
 </ul></li>
-</ul></font></li>
+<li>算法的每一步必须有确切的定义</li>
+</ul></li>
+</ul></li>
 </ul>
 <blockquote>
 <p>一个算法是由控制结构（顺序、分支和循环）和原操作（指固有数据类型的操作）构成的，则算法时间取决于两者的综合效果。为了比较同一个问题的不同算法，通常的做法：从算法中选取一种对于研究的问题(或算法类型)来说是基本操作的原操作,以该操作的重复执行的次术作为算法的时间量度。
@@ -88,7 +112,7 @@
 </ul>
 <font>
 <center>
-<span class="math inline">\(由此图可见，我们应该尽可能选用多项式阶O(n^k)甚至更优O(nlog_2n)的算法，而不希望用指数阶的算法\)</span>
+由此图可见，我们应该尽可能选用多项式阶<span class="math inline">\(O(n^k)\)</span>甚至更优<span class="math inline">\(O(nlog_2n)\)</span>的算法，而不希望用指数阶的算法
 </center>
 <p></p></font><p></p>
 <ul>
@@ -226,6 +250,9 @@ Complexity)S(n)\)</span>定义为该算法所耗费的存储空间，它也是�
       <url>/articles/%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9F/</url>
       <content type="html"><![CDATA[<!-- <font size=4> </font> -->
 <h1 id="所以什么是数据结构">所以什么是数据结构？</h1>
+<p><font size="4">数据结构是计算机存储，组织数据的方式。</font></p>
+<p><font size="4">数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运算或存储效率。</font></p>
+<p><font size="4">数据结构往往同高效的检索算法和索引技术有关。</font></p>
 <ul>
 <li><font size="4"><strong>数据对象</strong>在计算机中的组织方式</font>
 <ul>
@@ -235,6 +262,8 @@ Complexity)S(n)\)</span>定义为该算法所耗费的存储空间，它也是�
 <li><font size="4">数据对象必定与一系列加在其上的<strong>操作</strong>相关联</font></li>
 <li><font size="4">完成这些操作所用的方法就是<strong>算法</strong></font></li>
 </ul>
+<h1 id="数据类型data-type">数据类型（Data Type）</h1>
+<p><font size="4">数据类型在数据结构中的定义是<strong>一组性质相同的值的集合</strong>，以及定义在这个值集合上的一组操作的总称</font></p>
 <h1 id="抽象数据类型abstract-data-type">抽象数据类型（Abstract Data
 Type）</h1>
 <ul>

@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>什么是算法？ | WhiteWaves</title><meta name="keywords" content="数据结构,算法"><meta name="author" content="白浪"><meta name="copyright" content="白浪"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="定义  算法（Algorithm）   一个有限指令集 接受一些输入（有些情况下不需要输入） 产生输出 一定在有限步骤之后终止 每一条指令必须  有充分明确的目标，不可以有歧义 计算机能处理的范围之内 描述不应该依赖于任何一种计算机语言以及具体的实现手段     一个算法是由控制结构（顺序、分支和循环）和原操作（指固有数据类型的操作）构成的，则算法时间取决于两">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>什么是算法？ | WhiteWaves</title><meta name="keywords" content="数据结构,算法"><meta name="author" content="白浪"><meta name="copyright" content="白浪"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="定义  算法（Algorithm） 算法是解决问题的步骤，是指解决问题的方案准确且完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。 算法\(+\)数据结构\(&#x3D;\)应用程序 算法的特征：   可行性  一个有限指令集 算法中执行的任何计算步骤都是可以被分解为基本可执行的操作步，即每个计算步都可以在有限的时间内完成（也称有效性）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="什么是算法？">
 <meta property="og:url" content="https://heyzqf.com/articles/%E4%BB%80%E4%B9%88%E6%98%AF%E7%AE%97%E6%B3%95%EF%BC%9F/index.html">
 <meta property="og:site_name" content="WhiteWaves">
-<meta property="og:description" content="定义  算法（Algorithm）   一个有限指令集 接受一些输入（有些情况下不需要输入） 产生输出 一定在有限步骤之后终止 每一条指令必须  有充分明确的目标，不可以有歧义 计算机能处理的范围之内 描述不应该依赖于任何一种计算机语言以及具体的实现手段     一个算法是由控制结构（顺序、分支和循环）和原操作（指固有数据类型的操作）构成的，则算法时间取决于两">
+<meta property="og:description" content="定义  算法（Algorithm） 算法是解决问题的步骤，是指解决问题的方案准确且完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。 算法\(+\)数据结构\(&#x3D;\)应用程序 算法的特征：   可行性  一个有限指令集 算法中执行的任何计算步骤都是可以被分解为基本可执行的操作步，即每个计算步都可以在有限的时间内完成（也称有效性）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://w.wallhaven.cc/full/dg/wallhaven-dgpqdm.jpg">
 <meta property="article:published_time" content="2022-07-11T15:13:26.000Z">
-<meta property="article:modified_time" content="2022-07-11T16:46:50.760Z">
+<meta property="article:modified_time" content="2022-07-30T13:22:14.567Z">
 <meta property="article:author" content="白浪">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="算法">
@@ -54,7 +54,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-07-12 00:46:50'
+  postUpdate: '2022-07-30 21:22:14'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -147,22 +147,46 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fa fa-tv"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/PIC/16.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WhiteWaves</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fa fa-tv"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">什么是算法？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-11T15:13:26.000Z" title="发表于 2022-07-11 23:13:26">2022-07-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-11T16:46:50.760Z" title="更新于 2022-07-12 00:46:50">2022-07-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E6%9D%82%E8%B0%88/">算法杂谈</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="什么是算法？"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><!-- <font size=4></font> -->
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fa fa-tv"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/PIC/16.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WhiteWaves</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fa fa-tv"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">什么是算法？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-11T15:13:26.000Z" title="发表于 2022-07-11 23:13:26">2022-07-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-30T13:22:14.567Z" title="更新于 2022-07-30 21:22:14">2022-07-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E6%9D%82%E8%B0%88/">算法杂谈</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="什么是算法？"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><!-- <font size=4></font> -->
 <h1 id="定义">定义</h1>
 <ul>
-<li><font size="5"><strong>算法（Algorithm）</strong></font> <font size="4">
+<li><p><font size="5"><strong>算法（Algorithm）</strong></font></p>
+<p><font size="4">算法是<strong>解决问题的步骤</strong>，是指解决问题的方案<strong>准确且完整的描述</strong>，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。</font></p>
+<p><font size="4"><strong>算法<span class="math inline">\(+\)</span>数据结构<span class="math inline">\(=\)</span>应用程序</strong></font></p></li>
+<li><p><font size="5"><strong>算法的特征：</strong></font>
+<font size="4"></font></p>
+<ul>
+<li><strong>可行性</strong>
 <ul>
 <li>一个有限指令集</li>
+<li>算法中执行的任何计算步骤都是可以被分解为基本可执行的操作步，即每个计算步都可以在有限的时间内完成（也称有效性）</li>
+</ul></li>
+<li><strong>输入项</strong>
+<ul>
 <li>接受一些输入（有些情况下不需要输入）</li>
+<li>一个算法有0个或多个输入，以刻画运算对象的初始情况，所谓0个输入是指算法本身定出的初始条件</li>
+</ul></li>
+<li><strong>输出项</strong>
+<ul>
 <li>产生输出</li>
+<li>一个算法有一个或多个输出，以反映对输入数据加工后的结果，<del>没有输出的算法是毫无意义的</del></li>
+</ul></li>
+<li><strong>有穷性</strong>
+<ul>
 <li>一定在有限步骤之后终止</li>
-<li>每一条指令必须
+<li>一个算法必须总是在执行有限的步骤后结束，且每一步都必须在有限的时间内完成</li>
+</ul></li>
+<li><strong>确切性</strong>
+<ul>
+<li>每一条指令必须：
 <ul>
 <li>有充分明确的目标，不可以有歧义</li>
 <li>计算机能处理的范围之内</li>
 <li>描述不应该依赖于任何一种计算机语言以及具体的实现手段</li>
 </ul></li>
-</ul></font></li>
+<li>算法的每一步必须有确切的定义</li>
+</ul></li>
+</ul></li>
 </ul>
 <blockquote>
 <p>一个算法是由控制结构（顺序、分支和循环）和原操作（指固有数据类型的操作）构成的，则算法时间取决于两者的综合效果。为了比较同一个问题的不同算法，通常的做法：从算法中选取一种对于研究的问题(或算法类型)来说是基本操作的原操作,以该操作的重复执行的次术作为算法的时间量度。
@@ -230,7 +254,7 @@
 </ul>
 <font>
 <center>
-<span class="math inline">\(由此图可见，我们应该尽可能选用多项式阶O(n^k)甚至更优O(nlog_2n)的算法，而不希望用指数阶的算法\)</span>
+由此图可见，我们应该尽可能选用多项式阶<span class="math inline">\(O(n^k)\)</span>甚至更优<span class="math inline">\(O(nlog_2n)\)</span>的算法，而不希望用指数阶的算法
 </center>
 <p></p></font><p></p>
 <ul>
