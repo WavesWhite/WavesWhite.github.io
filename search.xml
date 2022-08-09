@@ -3,6 +3,90 @@
   
     
     <entry>
+      <title><![CDATA[Unsatisfied dependency expressed through field 'baseMapper'解决方法]]></title>
+      <url>/articles/Unsatisfied%20dependency%20expressed%20through%20field%20'baseMapper'%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="问题">问题</h1>
+<p><font size="4">项目报异常：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Unsatisfied dependency expressed through field &#x27;articleService&#x27;;</span><br><span class="line">Unsatisfied dependency expressed through field &#x27;baseMapper&#x27;;</span><br></pre></td></tr></table></figure>
+<h1 id="解决方法">解决方法</h1>
+<p><font size="5">应该是Mapper没有被扫描到</font></p>
+<ul>
+<li><p><font size="4">方法一：添加@MapperScan("xxx.xxx.xxx")注解,
+xxx.xxx.xxx就是你Mapper所在的包</font></p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;org.bailang.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaiLangBlogApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(BaiLangBlogApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p><font size="4">方法二：在mapper接口上面添加@Mapper注解</font></p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ArticleMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;Article&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p><font size="4"><strong>重新编译项目，编译成功</strong></font></p></li>
+</ul>
+<p>参考链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/zjwl199802/article/details/103713864/">https://blog.csdn.net/zjwl199802/article/details/103713864/</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂七杂八 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> Maven </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SpringBoot运行多模块项目时出现异常：程序包xxx.xxx.xxx不存在]]></title>
+      <url>/articles/SpringBoot%E8%BF%90%E8%A1%8C%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85xxx.xxx.xxx%E4%B8%8D%E5%AD%98%E5%9C%A8/</url>
+      <content type="html"><![CDATA[<h1 id="问题">问题</h1>
+<p><img src="/articles/SpringBoot%E8%BF%90%E8%A1%8C%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85xxx.xxx/../../img/posts_img/SpringBoot运行多模块项目时出现异常：程序包xxx.xxx.xxx不存在/2022-08-09-17-04-57.png"></p>
+<h1 id="解决方法">解决方法</h1>
+<p><font size="5">将项目的.idea和.imi文件删除，重新导入项目，重新生成.idea和.imi文件</font></p>
+<ul>
+<li><p><font size="4">删除文件</font></p>
+<p><img src="/articles/SpringBoot%E8%BF%90%E8%A1%8C%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85xxx.xxx/../../img/posts_img/SpringBoot运行多模块项目时出现异常：程序包xxx.xxx.xxx不存在/2022-08-09-17-05-07.png"></p></li>
+<li><p><font size="4">重新导入项目</font></p>
+<p><img src="/articles/SpringBoot%E8%BF%90%E8%A1%8C%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85xxx.xxx/../../img/posts_img/SpringBoot运行多模块项目时出现异常：程序包xxx.xxx.xxx不存在/2022-08-09-17-08-43.png"></p></li>
+<li><p><font size="4">选择Maven</font></p>
+<p><img src="/articles/SpringBoot%E8%BF%90%E8%A1%8C%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85xxx.xxx/../../img/posts_img/SpringBoot运行多模块项目时出现异常：程序包xxx.xxx.xxx不存在/2022-08-09-17-09-11.png"></p></li>
+<li><p><font size="4">配置项目JDK</font></p>
+<p><img src="/articles/SpringBoot%E8%BF%90%E8%A1%8C%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85xxx.xxx/../../img/posts_img/SpringBoot运行多模块项目时出现异常：程序包xxx.xxx.xxx不存在/2022-08-09-17-12-17.png"></p></li>
+<li><p><font size="4"><strong>重新编译项目，编译成功</strong></font></p></li>
+</ul>
+<p>参考链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/qq_38069453/article/details/78332992">项目maven依赖成功，但编译一直报错：引用项目的类路径找不到</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂七杂八 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> Maven </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[什么是算法？]]></title>
       <url>/articles/%E4%BB%80%E4%B9%88%E6%98%AF%E7%AE%97%E6%B3%95%EF%BC%9F/</url>
       <content type="html"><![CDATA[<!-- <font size=4></font> -->
