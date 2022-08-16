@@ -3,6 +3,106 @@
   
     
     <entry>
+      <title><![CDATA[跨域问题]]></title>
+      <url>/articles/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<!-- <font size=4></font> -->
+<h1 id="前言">前言</h1>
+<p><font size="4">做前后端分离项目的时候，在前端页面测试接口时遇到的一个报错：</font>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access to XMLHttpRequest at &#x27;http://localhost:7777/article/hotArticleList&#x27; from origin &#x27;http://localhost:8080&#x27; has been blocked by CORS policy: Response to preflight request doesn&#x27;t pass access control check: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource.</span><br></pre></td></tr></table></figure>
+<font size="4">之后上百度查了查发现是跨域的问题，那么就有了这篇文章。</font></p>
+<h1 id="什么是跨域">什么是跨域?</h1>
+<p><font size="4"><strong>跨域是指从 一个域名的网页 去请求
+另一个域名的资源</strong>。比如从百度（baidu.com）页面去请求我博客（heyzqf.com）的资源，由于有<strong>同源策略</strong>的关系，一般是不允许这么直接访问的</font></p>
+<h1 id="什么是同源策略">什么是同源策略?</h1>
+<p><font size="4"><strong>同源策略</strong>是浏览器中一个非常重要的安全策略，它的作用是限制不同源之间的交互，从而有效避免一些浏览器层面的攻击。不同源之间的请求是无法交互的，必须符合同源策略的请求才能进行访问。</font></p>
+<p><font size="4">什么是同源:</font></p>
+<ul>
+<li><p><font size="4">协议、域名、端口都相同</font></p>
+<table>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>URL1</th>
+<th>URL2</th>
+<th>说明</th>
+<th>是否同源</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>http://localhost:4000/archives/</td>
+<td>http://localhost:4000/tags/</td>
+<td>协议、域名、端口均相同</td>
+<td>同源</td>
+</tr>
+<tr class="even">
+<td>http://localhost:4000/archives/</td>
+<td>https://localhost:4000/tags/</td>
+<td>协议不同，域名和端口相同</td>
+<td>不同源</td>
+</tr>
+<tr class="odd">
+<td>http://heyzqf.com/archives/</td>
+<td>http://localhost:4000/tags/</td>
+<td>域名不同，协议和端口相同</td>
+<td>不同源</td>
+</tr>
+<tr class="even">
+<td>http://localhost:8080/archives/</td>
+<td>http://localhost:7777/tags/</td>
+<td>端口不同，域名和协议相同</td>
+<td>不同源</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h1 id="为什么要跨域">为什么要跨域？</h1>
+<p><font size="4">在一些情况下，我们是需要跨域访问的。比如，程序员开发网站的时候，就有可能需要在<strong>本地</strong>访问<strong>服务器</strong>的数据。再比如某公司的A页面（a.app.com）需要获取B页面（b.app.com）。</font></p>
+<h1 id="解决方法">解决方法</h1>
+<p><font size="4">使用 CORS 策略可以了。</font></p>
+<p><font size="4">CORS: Cross Origin Resource
+Sharing（跨域资源共享）</font></p>
+<p><font size="4">在 Spring Boot项目 中解决跨域问题的三种方案：</font></p>
+<ul>
+<li><p><font size="4">方案一：在目标方法上添加 <span class="citation" data-cites="CrossOrigin注解">@CrossOrigin注解</span> </font>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CrossOrigin</span> <span class="comment">// 跨域注解</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/hotArticleList&quot;)</span></span><br><span class="line"><span class="keyword">public</span> ResponseResult <span class="title function_">hotArticleList</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//查询热门文章，封装成ResponseResult返回</span></span><br><span class="line">    <span class="type">ResponseResult</span> <span class="variable">result</span> <span class="operator">=</span> articleService.hotArticleList();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p><font size="4">方案二：添加 CORS 过滤器</font>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span> <span class="comment">// 配置类注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CorsConfig</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span> <span class="comment">// 注入Spring容器</span></span><br><span class="line">    <span class="comment">// (org.springframework.web.filter.CorsFilter)</span></span><br><span class="line">    <span class="keyword">public</span> CorsFilter <span class="title function_">corsFilter</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">CorsConfiguration</span> <span class="variable">corsConfiguration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CorsConfiguration</span>();</span><br><span class="line">        <span class="comment">// 允许哪些域访问</span></span><br><span class="line">        corsConfiguration.addAllowedOrigin(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">        <span class="comment">// 请求的头字段</span></span><br><span class="line">        corsConfiguration.addAllowedHeader(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">        <span class="comment">// 请求的方式</span></span><br><span class="line">        corsConfiguration.addAllowedMethod(<span class="string">&quot;*&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// (org.springframework.web.cors.UrlBasedCorsConfigurationSource)</span></span><br><span class="line">        <span class="type">UrlBasedCorsConfigurationSource</span> <span class="variable">source</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UrlBasedCorsConfigurationSource</span>();</span><br><span class="line">        <span class="comment">// 映射路径</span></span><br><span class="line">        source.registerCorsConfiguration(<span class="string">&quot;/**&quot;</span>, corsConfiguration);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">CorsFilter</span>(source);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p><font size="4">方案三：实现 WebMvcConfigurer 接口， 重写
+addCorsMappings 方法</font> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置允许跨域的路径, 映射</span></span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                <span class="comment">// 设置允许跨域请求的域名</span></span><br><span class="line">                .allowedOriginPatterns(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">// 设置允许的请求方式</span></span><br><span class="line">                .allowedMethods(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>, <span class="string">&quot;DELETE&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;HEAD&quot;</span>, <span class="string">&quot;OPTIONS&quot;</span>)</span><br><span class="line">                <span class="comment">// 是否允许cookie</span></span><br><span class="line">                .allowCredentials(<span class="literal">true</span>)</span><br><span class="line">                <span class="comment">// 设置允许的header属性</span></span><br><span class="line">                .allowedHeaders(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">// 跨域允许时间, 3600秒内浏览器不再询问，有效期</span></span><br><span class="line">                .maxAge(<span class="number">3600</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<p>参考链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/u011236348/article/details/120318852">跨域问题的解决方案</a></li>
+<li><a href="https://www.bilibili.com/video/BV12U4y1f7Qi?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=dc2de764efd96537d7ff3b89b0ffb064">什么是跨域以及如何解决？通俗易懂带你彻底搞定</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂七杂八 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> 前后端分离 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Unsatisfied dependency expressed through field 'baseMapper'解决方法]]></title>
       <url>/articles/Unsatisfied%20dependency%20expressed%20through%20field%20'baseMapper'%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="问题">问题</h1>
