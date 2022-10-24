@@ -5,15 +5,15 @@
     <entry>
       <title><![CDATA[java项目中impl作用]]></title>
       <url>/articles/java%E9%A1%B9%E7%9B%AE%E4%B8%ADimpl%E4%BD%9C%E7%94%A8/</url>
-      <content type="html"><![CDATA[<p>在Java项目开发中，通常会将后台分成几层，常见的是三层<strong>MVC</strong>：</p>
+      <content type="html"><![CDATA[<p><font size="4">在Java项目开发中，通常会将后台分成几层，常见的是三层<strong>MVC</strong>：</font></p>
 <ul>
-<li><strong>Model（模型层）</strong></li>
-<li><strong>View（视图层）</strong></li>
-<li><strong>Controller（控制层）</strong></li>
+<li><font size="4"><strong>Model（模型层）</strong></font></li>
+<li><font size="4"><strong>View（视图层）</strong></font></li>
+<li><font size="4"><strong>Controller（控制层）</strong></font></li>
 </ul>
-<p>而<strong>impl</strong>通常处于<strong>Controller层</strong>的<strong>service</strong>下，是用于存放<strong>service</strong>接口的实现类的</p>
-<p><strong>impl</strong>的全称是<strong>implement</strong>，表示实现的意思，在Java语法中是实现接口的意思，所以<strong>impl</strong>在Java项目中是用于实现接口的</p>
-<p><img src="/.com//../../posts_img/java项目中impl作用/2022-10-24-13-28-55.png"></p>
+<p><font size="4">而<strong>impl</strong>通常处于<strong>Controller层</strong>的<strong>service</strong>下，是用于存放<strong>service</strong>接口的实现类的</font></p>
+<p><font size="4"><strong>impl</strong>的全称是<strong>implement</strong>，表示实现的意思，在Java语法中是实现接口的意思，所以<strong>impl</strong>在Java项目中是用于实现接口的</font></p>
+<p><img src="/.com//../../img/posts_img/java项目中impl作用/2022-10-24-13-28-55.png"></p>
 ]]></content>
       
         <categories>
