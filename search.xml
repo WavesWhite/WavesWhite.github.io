@@ -14,6 +14,10 @@
 <p><font size="4">而<strong>impl</strong>通常处于<strong>Controller层</strong>的<strong>service</strong>下，是用于存放<strong>service</strong>接口的实现类的</font></p>
 <p><font size="4"><strong>impl</strong>的全称是<strong>implement</strong>，表示实现的意思，在Java语法中是实现接口的意思，所以<strong>impl</strong>在Java项目中是用于实现接口的</font></p>
 <p><img src="/.com//../../img/posts_img/java项目中impl作用/2022-10-24-13-28-55.png"></p>
+<p>参考链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/maoziyang1996/article/details/87938663">java中impl作用</a></li>
+</ul>
 ]]></content>
       
         <categories>
