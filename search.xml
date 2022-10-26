@@ -3,6 +3,131 @@
   
     
     <entry>
+      <title><![CDATA[Maven安装教程]]></title>
+      <url>/articles/Maven%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p><font size="4">本文须知：安装maven环境之前要先安装java jdk环境 (Maven
+3.3+ require JDK 1.7 及以上)</font></p>
+</blockquote>
+<blockquote>
+<p><font size="4">本文环境：JDK：1.8.0、Maven：3.6.3</font></p>
+</blockquote>
+<h1 id="第一步下载-maven">第一步：下载 Maven</h1>
+<blockquote>
+<p><font size="4">官方下载链接：https://maven.apache.org/download.cgi</font></p>
+</blockquote>
+<p><font size="4">Binary是可执行版本，已经编译好可以直接使用</font></p>
+<p><font size="4">Source是源代码版本，需要自己编译成可执行软件才可使用</font></p>
+<blockquote>
+<p><font size="4">官网经常上不去，下载不成功，可以在下面的百度云盘获取：(Maven：3.6.3)</font></p>
+</blockquote>
+<blockquote>
+<p><font size="4">链接：https://pan.baidu.com/s/1a9UkvEgwiucwP7oTK3HV-Q?pwd=9ng3
+提取码：9ng3</font></p>
+</blockquote>
+<p><font size="4">选择已经编译好的windows版本进行安装：选择zip版本(如下图):</font>
+<img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-20-55-22.png"></p>
+<p><font size="4">解压完后：</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-20-56-31.png"></p>
+<h1 id="第二步maven-环境变量配置">第二步：Maven 环境变量配置</h1>
+<p><font size="4">（这里我没有这个需求，就没有去配置环境变量<del>绝对不是因为懒</del>，所以用了网上的截图）</font></p>
+<p><img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-00-50.png"></p>
+<p><img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-00-55.png"></p>
+<ul>
+<li><p><font size="4">开始配置环境变量（点击系统变量，新建按钮）：</font></p>
+<blockquote>
+<p><font size="4">新建系统变量：MAVEN_HOME=D:\maven\apache-maven-3.8.4
+(以<strong>自己安装的路径和版本</strong>为准)</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-02-01.png"></p>
+</blockquote></li>
+<li><p><font size="4">编辑变量Path：</font></p>
+<blockquote>
+<p><font size="4">添加变量值：%MAVEN_HOME%\bin</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-03-37.png">
+<img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-03-42.png"></p>
+</blockquote></li>
+</ul>
+<h1 id="第三步验证maven环境配置是否成功">第三步：验证Maven环境配置是否成功</h1>
+<blockquote>
+<p><font size="4">终端输入命令：输入命令：mvn -version</font></p>
+</blockquote>
+<ul>
+<li><font size="4">安装成功</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-07-03.png"></li>
+</ul>
+<h1 id="第四步配置maven仓库以及相关设置">第四步：配置Maven仓库以及相关设置</h1>
+<ul>
+<li><p><font size="4">1：在
+maven同级目录下建一个maven仓库（找一个适合管理的位置）</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-11-04.png"></p></li>
+<li><p><font size="4">2：在路径
+C:\Users\User\Desktop\Maven\apache-maven-3.6.3\conf
+(自己安装maven的目录路径) 找到 settings.xml配置文件</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-14-39.png"></p>
+<ul>
+<li><p><font size="4">找到节点<strong>localRepository</strong>，在注释外添加<strong>自己仓库的地址</strong></font>
+<img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-16-02.png"></p></li>
+<li><p><font size="4">配置镜像（采用国内阿里云的镜像下载依赖会快很多）：</font></p>
+<blockquote>
+<p><font size="4">在settings.xml配置文件中找到mirrors节点,添加如下配置（注意要添加在<mirrors>和</mirrors>两个标签之间，其它配置同理）,放在默认节点的前面</font>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 阿里云仓库 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-21-35.png"></p>
+</blockquote></li>
+<li><p><font size="4">配置JDK：</font></p>
+<blockquote>
+<p><font size="4">在settings.xml配置文件中找到profiles节点，添加如下配置：</font>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- java jdk1.8版本 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>jdk-1.8<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span>        </span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">maven.compiler.compilerVersion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-32-06.png"></p>
+</blockquote></li>
+</ul></li>
+</ul>
+<p><font size="4">配置完成，进入终端，输入命令：mvn help:system
+测试，配置成功则本地仓库如下图显示：</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-33-36.png"></p>
+<blockquote>
+<p><font size="4">首次执行 mvn help:system
+命令，Maven相关工具自动帮我们到Maven中央仓库下载缺省的或者Maven中央仓库更新的各种配置文件和类库（jar包)
+到Maven本地仓库中。</font></p>
+</blockquote>
+<blockquote>
+<p><font size="4">下载完各种文件后， mvn help:system
+命令会打印出所有的Java系统属性和环境变量，这些信息对我们日常的编程工作很有帮助。</font></p>
+</blockquote>
+<h1 id="添加maven到idea中">添加Maven到IDEA中</h1>
+<blockquote>
+<p><font size="4">本地的Maven文件一般是配套IDEA一起使用，如何让每一次新建项目都选中自己的maven，本文推荐以下方案解决（避免每一次都要手动修改maven配置）：</font></p>
+</blockquote>
+<ul>
+<li><p><font size="4"><strong>新建一个Maven项目</strong>，进入设置可以发现该新建项目没有指向我们本地的maven地址</font>
+<img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-42-33.png"></p></li>
+<li><p><font size="4">配置新建项目设置</font> <img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-44-37.png"></p></li>
+<li><p><font size="4">找到Maven设置，选择自己的Maven目录地址、配置setting文件及仓库地址如下图：</font>
+<img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-21-49-43.png"></p></li>
+</ul>
+<h1 id="注意事项">注意事项</h1>
+<p><font size="4">如果Maven的版本高于IDEA的版本，有可能会出现这样的报错：</font>
+<img src="/.com//../../img/posts_img/Maven安装教程/2022-10-26-22-04-31.png">
+<font size="4">出现这种错误最好的解决办法就是：<strong>用当前IDEA自带的Maven插件和自带的Maven</strong>，因为这样最不容易出现版本问题</font></p>
+<p><font size="4">手动降低Maven版本也行，Maven版本最好和IDEA同一年发布的，这样不容易出错</font></p>
+<p>参考链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_44080187/article/details/122933194">史上最详细的Maven安装教程</a></li>
+<li><a href="https://blog.csdn.net/xuruilll/article/details/125655668">IDEA
+Maven工程出现org.codehaus.plexus.component.repository.exception.ComponentLookupException错误</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂七杂八 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> Maven </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[java项目中impl作用]]></title>
       <url>/articles/java%E9%A1%B9%E7%9B%AE%E4%B8%ADimpl%E4%BD%9C%E7%94%A8/</url>
       <content type="html"><![CDATA[<p><font size="4">在Java项目开发中，通常会将后台分成几层，常见的是三层<strong>MVC</strong>：</font></p>
