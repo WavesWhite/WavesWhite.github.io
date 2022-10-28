@@ -3,6 +3,127 @@
   
     
     <entry>
+      <title><![CDATA[SpringBoot配置文件——.properties文件和.yml文件]]></title>
+      <url>/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C.yml%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<p><font size="4"> </font></p>
+<p><font size="4"></font></p>
+<p></p>
+<h1 id="前言配置文件的作用">前言：配置文件的作用</h1>
+<p><font size="4">
+通常情况下，一个项目中的一些重要信息都会放在配置文件中，比如：<strong>数据库的连接信息</strong>、<strong>项目的启动端口</strong>、一些<strong>第三方的秘钥</strong>、<strong>记录信息的普通日志</strong>和<strong>异常日志</strong>等。
+</font></p>
+<h1 id="springboot的配置文件-.properties-和-.yml">SpringBoot的配置文件
+（.properties 和 .yml）</h1>
+<p><font size="4"> Spring
+Boot的配置文件主要有两种格式：.properties文件和.yml文件 </font> <img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-27-23-05-16.png"></p>
+<p><font size="4">
+这两种格式的配置文件可以共同存在于一个项目中，但一般情况下我们会统一格式，只使用其中的一种，来降低故障率。
+</font></p>
+<p><font size="4">
+.properties是最早期的SpringBoot配置文件的格式，也是现在默认的配置文件格式，出现的时间早于.yml
+</font></p>
+<p><font size="4">
+<strong>当这两个配置文件中出现相同的配置时，会优先执行.properties中的配置，然后再执行.yml中的配置，即.properties的优先级大于.yml</strong>
+</font></p>
+<ul>
+<li><p><font size="4"><strong>properties</strong></font></p>
+<p><font size="4">
+创建SpringBoot项目后会自动生成一个配置文件，在该文件中，信息以键值对的形式进行储存
+</font> <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置项目的信息</span></span><br><span class="line"><span class="comment"># key=value</span></span><br><span class="line"><span class="attr">server.port</span>=<span class="string">8080</span></span><br><span class="line"><span class="attr">spring.datasource.url</span>=<span class="string">jdbc:mysql://127.0.0.1:3306/testdb?</span></span><br><span class="line"><span class="attr">characterEncoding</span>=<span class="string">utf8</span></span><br><span class="line"><span class="attr">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.password</span>=<span class="string">root</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><font size="4">缺点</font>
+<font size="4">对于同一个对象的多个属性进行设置时很麻烦，需要多次重复，存在冗余配置项；当我们想要设置同一个对象很多的信息时，需要多次重复这个信息：</font>
+<img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-27-23-17-55.png"></li>
+</ul></li>
+<li><p><font size="4"><strong>yml</strong></font></p>
+<p><font size="4"> yml是YMAL的缩写，全称是 Yet Another Markup
+Language，另一种<strong>标记语言</strong> </font></p>
+<p><font size="4">
+YMAL是一个可读性高、易于理解、用来表达数据序列化的格式。 </font></p>
+<p><font size="4">
+YMAL的作用是可以做到跨语言使用，不仅Java中可以使用，Go和python中都可以使用
+</font></p>
+<ul>
+<li><font size="4">语法格式：</font>
+<ul>
+<li><font size="4"><strong>key: value</strong>
+表示键值对关系，冒号后面必须加一个空格</font></li>
+<li><font size="4">大小写敏感</font></li>
+<li><font size="4">缩进时不允许使用tab键，只能用空格</font></li>
+<li><font size="4">松散表示，java使用驼峰命名，而用原名或者-代替都可以正确映射，比如java中的名称是lastName，yml中使用lastName或者last-name都可以映射到</font></li>
+</ul></li>
+<li><font size="4">键值关系</font> <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通常写法</span></span><br><span class="line"><span class="attr">student:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">张三</span></span><br><span class="line">  <span class="attr">age:</span> <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一种写法</span></span><br><span class="line"><span class="attr">student:</span> &#123; <span class="attr">id:</span> <span class="number">1</span>, <span class="attr">name:</span> <span class="string">张三</span>, <span class="attr">age:</span> <span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><font size="4"> yml中，字符串默认不需要加上单引号或者双引号 </font></p>
+<p><font size="4">
+<strong>使用双引号</strong>：不会转义字符串中的特殊字符，特殊字符会作为本身想要表达的意思：比如
+name: “zhangsan ”,会输出：zhangsan 换行 23 (下面使用<strong><span class="citation" data-cites="ConfigurationProperties">@ConfigurationProperties</span></strong>注解演示)
+</font> <img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-03-17.png">
+<img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-03-51.png"></p>
+<p><font size="4">
+<strong>使用单引号</strong>：会转义特殊字符，特殊字符失去特殊作用变成普通字符
+</font> <img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-04-41.png">
+<font size="4"> <strong>使用YML连接数据库：</strong> </font> <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">datasource:</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/bailang_blog?characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai</span></span><br><span class="line">  <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">  <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">  <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+<font size="4"> 表示常用的字面量： </font> <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 普通字面量</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">zhangsan</span></span><br><span class="line"><span class="attr">age:</span> <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 布尔类型</span></span><br><span class="line"><span class="attr">flag:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 日期</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2022</span><span class="string">/10/27</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 同一个对象的多个属性</span></span><br><span class="line"><span class="attr">people:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">lisi</span></span><br><span class="line">      <span class="attr">age:</span> <span class="number">20</span></span><br><span class="line"><span class="comment"># 数组</span></span><br><span class="line"><span class="comment"># 用 -表示数组中的一个元素</span></span><br><span class="line"><span class="attr">pets:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cat</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">dog</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">pig</span></span><br><span class="line"><span class="comment"># 另一种写法</span></span><br><span class="line"><span class="attr">petss:</span> [<span class="string">dog</span>,<span class="string">cat</span>,<span class="string">pig</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># list对象、set对象、数组对象</span></span><br><span class="line"><span class="attr">students:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">zhangsan</span></span><br><span class="line">        <span class="attr">age:</span> <span class="number">22</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">lisi</span></span><br><span class="line">        <span class="attr">age:</span> <span class="number">20</span></span><br><span class="line">      <span class="bullet">-</span> &#123;<span class="attr">name:</span> <span class="string">wangwu</span>,<span class="attr">age:</span> <span class="number">18</span>&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h1 id="读取配置文件的方法">读取配置文件的方法</h1>
+<h2 id="value注解读取单个配置项"><span class="citation" data-cites="Value注解读取单个配置项">@Value注解读取单个配置项</span></h2>
+<p><font size="4">
+如果我们想要主动的读取配置文件中的信息，可以使用注解<strong><span class="citation" data-cites="Value">@Value</span></strong>，使用格式：
+</font> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;$&#123;server.port&#125;&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String port;</span><br></pre></td></tr></table></figure> <font size="4">
+在属性前加上@Value注解，后面的括号写入要读取的配置中哪个key，比如读取下面的server.port，注意格式：双引号+${}
+</font> <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置项目端口</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7777</span></span><br></pre></td></tr></table></figure> <img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-10-48.png"></p>
+<h2 id="configurationproperties读取配置信息"><span class="citation" data-cites="ConfigurationProperties读取配置信息">@ConfigurationProperties读取配置信息</span></h2>
+<ul>
+<li><p><font size="4">读取对应前缀的后面的属性</font> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="comment">// 将类定义为一个bean的注解，比如 @Component,@Service,@Controller,@Repository</span></span><br><span class="line"><span class="comment">// 或者 @Configuration</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="comment">// 表示使用配置文件中前缀为datatest的属性的值初始化该bean定义产生的的bean实例的同名属性</span></span><br><span class="line"><span class="comment">// 在使用时这个定义产生的bean时，其属性test会是：这是另一个测试属性</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;datatest&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConfigurationPropertiesTest</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> String test;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font size="4">对应application.yml配置文件内容如下：</font> <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">datatest:</span></span><br><span class="line">  <span class="attr">test:</span> <span class="string">这是另一个测试属性</span></span><br></pre></td></tr></table></figure>
+<img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-16-01.png">
+<font size="4">读取配置属性的 <strong>list</strong></font> <img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-19-38.png"></p></li>
+<li><p><font size="4">读取实体类
+（将配置文件的一组对象映射到实体类上）</font>
+<font size="4">使用格式：</font> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span> <span class="comment">//spring 启动时直接将配置文件映射到当前类属性上</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(&quot;test&quot;)</span> <span class="comment">// test是在配置好的key</span></span><br></pre></td></tr></table></figure>
+<font size="4">在yml配置文件中，我们创建一个student对象：</font>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置信息</span></span><br><span class="line"><span class="attr">test:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">WhiteWaves</span></span><br><span class="line">  <span class="attr">id:</span> <span class="number">33</span></span><br><span class="line">  <span class="attr">app:</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">This</span> <span class="string">is</span> <span class="string">Field</span></span><br><span class="line">    <span class="attr">count:</span> <span class="number">99</span></span><br><span class="line">    <span class="attr">users:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">JBDC</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">Spring</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">Boot</span></span><br></pre></td></tr></table></figure>
+<font size="4">将这个对象映射到User类中，也就是从配置文件里读取到类中</font>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(&quot;test&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">App</span> <span class="variable">app</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">App</span>();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">App</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String field;</span><br><span class="line">        <span class="keyword">private</span> Integer count;</span><br><span class="line">        <span class="keyword">private</span> List&lt;String&gt; users = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font size="4"><strong>使用注入的方式将对象注入到一个类中</strong></font>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConfigurationPropertiesTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span> <span class="comment">// 属性注入</span></span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-27-54.png">
+<font size="4">注意包路径配置的问题！！！<strong>启动类和要注入的类包必须放在同级目录下，否则读取不到，会显示启动失败Application</strong></font>
+<img src="/articles/SpringBoot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E2%80%94%E2%80%94.properties%E6%96%87%E4%BB%B6%E5%92%8C/../../img/posts_img/SpringBoot配置文件properties和yml/2022-10-28-17-29-19.png"></p></li>
+</ul>
+<h1 id="总结">总结</h1>
+<ul>
+<li><font size="4">yml语法更简洁，可以解决数据冗余问题</font></li>
+<li><font size="4">yml跨语言的通用性更好，它不支持java语言还支持golang
+和python</font></li>
+<li><font size="4">yml 支持更多的数据类型</font></li>
+<li><font size="4">yml格式的配置文件在写的时候更容易出错（冒号后面需要加一个空格），而properties虽然写法更复杂但是不容易出错</font></li>
+<li><font size="4">yml虽然可以和properties共存，但一个项目中最好统一格式，只用其中的一个</font></li>
+</ul>
+<p>参考链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/Merciful_Lion/article/details/124149012">SpringBoot~配置文件properties和yml.</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂七杂八 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Maven安装教程]]></title>
       <url>/articles/Maven%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
       <content type="html"><![CDATA[<blockquote>
