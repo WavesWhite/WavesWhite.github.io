@@ -3,6 +3,47 @@
   
     
     <entry>
+      <title><![CDATA[SpringBoot-CommandLineRunner使用详解]]></title>
+      <url>/articles/SpringBoot-CommandLineRunner%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
+      <content type="html"><![CDATA[<h1 id="问题背景">问题背景</h1>
+<p><font size="4">如果希望在SpringBoot应用启动时进行一些初始化操作，可以选择SpringBoot提供了一个简单的方式来实现此类需求：选择使用CommandLineRunner来进行处理</font></p>
+<p><font size="4">只需要实现CommandLineRunner接口，并且把对应的bean注入容器。把相关初始化的代码重新到需要重新的方法中</font></p>
+<p><font size="4">这样就会在应用启动的时候执行对应的代码</font></p>
+<h1 id="代码实现">代码实现</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>  <span class="comment">// 注入容器</span></span><br><span class="line"><span class="meta">@Order(value = 1)</span>   <span class="comment">// 如果存在多个CommandLineRunner组件方法，可以使用 @Order() 注解指定加载顺序，如果不指定value参数，默认为：2147483647</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestCommandLineRunner</span> <span class="keyword">implements</span> <span class="title class_">CommandLineRunner</span> &#123;   <span class="comment">// 不能放在test目录中，要放在启动类的同级目录下</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * CommandLineRunner：</span></span><br><span class="line"><span class="comment">     * 这是一个接口，用户可以自定义实现该接口，具体实现run方法</span></span><br><span class="line"><span class="comment">     * 任何在上下文容器之内的bean都可以实现run方法</span></span><br><span class="line"><span class="comment">     * 如果在上下文中，存在多个该接口实现类，可以通过<span class="doctag">@order</span>注解，指定加载顺序</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">(String... args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是一个测试CommandLineRunner的测试方法&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;程序初始化中......&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="注意">注意</h1>
+<p><font size="4">启动CommandLineRunner的执行其实是整个应用启动的一部分，<strong>项目是在CommandLineRunner执行完成之后才启动完成的</strong></font></p>
+<p><font size="4">如果CommandLineRunner执行中的操作影响到了主线程，可以<strong>重新开启一个线程</strong>，让CommandLineRunner单独去做我们想要做的操作</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Order(value = 1)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestCommandLineRunner</span> <span class="keyword">implements</span> <span class="title class_">CommandLineRunner</span> &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">(String... strings)</span>&#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>()&#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">                        System.out.println(<span class="string">&quot;过去了10秒钟……,i的值为：&quot;</span> + i);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (i == <span class="number">4</span>) &#123; <span class="comment">//第40秒时抛出一个异常</span></span><br><span class="line">                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考链接</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/366528471">使用 SpringBoot 的
+CommandLineRunner 遇到的坑</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂七杂八 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> CommandLineRunner </tag>
+            
+            <tag> 预加载 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SpringBoot使用AOP实现日志记录 + Slf4j 日志配置]]></title>
       <url>/articles/SpringBoot%E4%BD%BF%E7%94%A8AOP%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%20+%20Slf4j%20%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h1 id="下载依赖">下载依赖</h1>
@@ -770,9 +811,9 @@ Complexity)S(n)\)</span>定义为该算法所耗费的存储空间，它也是�
         
         <tags>
             
-            <tag> 数据结构 </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
             
         </tags>
         
@@ -935,9 +976,9 @@ P行，每行一个’Yes’或’No’。表示第i个询问的答案为“具�
         
         <tags>
             
-            <tag> 数据结构 </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> 数据结构 </tag>
             
         </tags>
         
