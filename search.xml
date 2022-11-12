@@ -3,6 +3,147 @@
   
     
     <entry>
+      <title><![CDATA[SpringBoot定时任务@EnableScheduling注解使用方法与cron表达式]]></title>
+      <url>/articles/SpringBoot%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1@EnableScheduling%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%B8%8Ecron%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<!-- <font size=4></font> -->
+<h1 id="前言">前言</h1>
+<h2 id="定时任务是作用">定时任务是作用？</h2>
+<p><font size="4">定时任务相当于闹钟，在什么时间做什么事情（执行什么命令/脚本）</font></p>
+<h2 id="定时任务的实现">定时任务的实现？</h2>
+<p><font size="4">定时任务的实现方式有很多，比如XXL-Job等。但是其实核心功能和概念都是类似的，很多情况下只是调用的API不同而已</font></p>
+<p><font size="4">这里就先用SpringBoot为我们提供的定时任务API的@EnableScheduling注解来简单实现一下定时任务</font></p>
+<h1 id="enablescheduling注解使用"><span class="citation" data-cites="EnableScheduling注解使用">@EnableScheduling注解使用</span></h1>
+<h2 id="导入依赖">导入依赖</h2>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动类里面使用-enablescheduling-注解开启功能自动扫描">启动类里面使用
+<span class="citation" data-cites="EnableScheduling">@EnableScheduling</span>
+注解开启功能，自动扫描</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableScheduling</span>   <span class="comment">// 开启定时任务</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QiNiuTestApplication</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">SimpleDateFormat</span> <span class="variable">simpleDateFormat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd / HH:mm:ss&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;当前时间：\t&quot;</span> + simpleDateFormat.format(<span class="keyword">new</span> <span class="title class_">Date</span>()));    <span class="comment">// 输出当前时间</span></span><br><span class="line">        SpringApplication.run(QiNiuTestApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="定时任务测试方法">定时任务测试方法</h2>
+<ul>
+<li><font size="4">任务的类上写 <span class="citation" data-cites="Component">@Component</span></font></li>
+<li><font size="4">任务方法上写 <span class="citation" data-cites="Scheduled">@Scheduled</span></font> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@Component</span>  <span class="comment">// 注入容器</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SchedulingTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始延迟10秒，每隔3秒</span></span><br><span class="line">    <span class="comment">// @Scheduled(fixedRate = 3000, initialDelay = 10000)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每次执行完延迟3秒</span></span><br><span class="line">    <span class="comment">// @Scheduled(fixedDelay = 3000)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每次隔3秒执行一次</span></span><br><span class="line">    <span class="comment">// @Scheduled(fixedRate = 3000)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从第0秒开始，每次隔5执行一次</span></span><br><span class="line">    <span class="comment">// @Scheduled(cron = &quot;0/5 * * * * ?&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每小时的第10分钟到20分钟内，每分钟执行一次1·</span></span><br><span class="line">    <span class="comment">// @Scheduled(cron = &quot;0 0-10 * * * ?&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每个月 每日 0点与8点的 0分与30分的 0秒 各执行一次</span></span><br><span class="line">    <span class="comment">// @Scheduled(cron = &quot;0 0,30 0,8 * * ?&quot;)</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    执行结果：</span></span><br><span class="line"><span class="comment">    2022-11-05 00:00:00</span></span><br><span class="line"><span class="comment">    2022-11-05 00:30:00</span></span><br><span class="line"><span class="comment">    2022-11-05 08:00:00</span></span><br><span class="line"><span class="comment">    2022-11-05 08:30:00</span></span><br><span class="line"><span class="comment">    2022-11-06 00:00:00</span></span><br><span class="line"><span class="comment">    2022-11-06 00:30:00</span></span><br><span class="line"><span class="comment">    2022-11-06 08:00:00</span></span><br><span class="line"><span class="comment">    2022-11-06 08:30:00</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每月1号凌晨2点执行一次</span></span><br><span class="line">    <span class="meta">@Scheduled(cron = &quot;0 0 0,2 1 * ?&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">SimpleDateFormat</span> <span class="variable">simpleDateFormat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd / HH:mm:ss&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;当前时间：\t&quot;</span> + simpleDateFormat.format(<span class="keyword">new</span> <span class="title class_">Date</span>()));    <span class="comment">// 打印 当前日期时间</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="定时任务的cron表达式">定时任务的cron表达式</h1>
+<h2 id="cron表达式介绍">cron表达式介绍</h2>
+<p><font size="4">cron = 0 0 2 * *
+?，这个表达式的含义是：每天2点执行一次任务。</font></p>
+<p><font size="4">cron表达式是一个字符串，以5或者6个空格隔开（上面示例是被5个空格隔开）</font></p>
+<p><font size="4">字符串被切割成
+<strong>6个或者7个域</strong>，每个域都代表不同的含义</font></p>
+<p><font size="4">从左到右依次分为：秒、分、时、日、月、周几、年（其中年不是必须的，所以cron表达式有两种形式）</font></p>
+<blockquote>
+<p>{Seconds} {Minutes} {Hours} {DayofMonth} {Month} {DayofWeek}
+{Year}</p>
+</blockquote>
+<p><font size="4">或者</font></p>
+<blockquote>
+<p>{Seconds} {Minutes} {Hours} {DayofMonth} {Month} {DayofWeek}</p>
+</blockquote>
+<ul>
+<li><font size="4">各个域的含义:</font> <img src="https://pic1.zhimg.com/v2-86ff6b9d188ae417753a0825d4f19e0c_r.jpg"></li>
+</ul>
+<p><font size="4">每个域都可以用数字表示，但是还可以出现如下特殊字符:</font></p>
+<ul>
+<li><font size="4">* :
+表示匹配该域的任意值。比如Minutes域使用*，就表示每分钟都会触发</font></li>
+<li><font size="4">- : 表示范围。比如Minutes域使用
+10-20，就表示从10分钟到20分钟每分钟都会触发一次</font></li>
+<li><font size="4">, :
+表示列出枚举值。比如Minutes域使用1,3，就表示1分钟和3分钟都会触发一次</font></li>
+<li><font size="4">/ :
+表示间隔时间触发(开始时间/时间间隔)。例如在Minutes域使用
+5/10，就表示从第5分钟开始，每隔10分钟触发一次</font></li>
+<li><font size="4">? :
+表示不指定值。简单理解就是忽略该字段的值，直接根据另一个字段的值触发执行</font></li>
+<li><font size="4"># :
+表示该月第n个星期x(x#n)，仅用星期域。如：星期：6#3，表示该月的第三个星期五</font></li>
+<li><font size="4">L :
+表示最后，是单词"last"的缩写（最后一天或最后一个星期几）；仅出现在日和星期的域中。用在日则表示该月的最后一天，用在星期则表示该月的最后一个星期。如：星期域上的值为5L，则表示该月最后一个星期的星期四。在使用'L'时，不要指定列表','或范围'-'，否则易导致出现意料之外的结果</font></li>
+<li><font size="4">W:
+仅用在日的域中，表示距离当月给定日期最近的工作日（周一到周五），是单词"weekday"的缩写</font></li>
+<li><font size="4"><strong>LW:
+'L'和'W'可以一起组合在日字段使用。表示当月的最后一个工作日触发事件</strong></font></li>
+</ul>
+<p><font size="4">比如："4W"
+表示距离4号最近的工作日（当月的）触发</font></p>
+<ul>
+<li><font size="4">当4号就是工作日时，则表示当天触发；当4号为周六时，则表示3号（周五）触发</font></li>
+<li><font size="4">当4号为周日时，则表示在5号（周一）触发</font></li>
+</ul>
+<p><font size="4">比如："1W"
+表示距离1号最近的工作日触发，但是，该工作日只算当月的</font></p>
+<ul>
+<li><font size="4">当月1号是周六，则"1W"表示在当月3号（周一）触发。就算上个月的最后一天是工作日，也不会触发</font></li>
+</ul>
+<h2 id="取值说明">取值说明</h2>
+<ul>
+<li><font size="4"><strong>DayofMonth：</strong></font>
+<ul>
+<li><font size="4">可以用数字1-31
+中的任一个值，但要注意一些特别的月份</font></li>
+</ul></li>
+<li><font size="4"><strong>Month：</strong></font>
+<ul>
+<li><font size="4">一年中的月份，可以用 1-12 或用字符串 <strong>"JAN, FEB,
+MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV and DEC"</strong>
+表示</font></li>
+</ul></li>
+<li><font size="4"><strong>DayofWeek：</strong></font>
+<ul>
+<li><font size="4">表示星期几，可以用数字 1-7<strong>（1 =
+星期日）</strong>，或者用字符串 <strong>"SUN, MON, TUE, WED, THU, FRI
+and SAT"</strong> 来表示</font></li>
+</ul></li>
+</ul>
+<h2 id="常用cron表达式">常用cron表达式</h2>
+<ul>
+<li><font size="4"> */10 * * * * ? 每隔10秒执行一次</font></li>
+<li><font size="4"> 0 */5 * * * ? 每隔5分钟执行一次</font></li>
+<li><font size="4"> 0 2,22,32 * * * ? 每小时的 2分，22分，32分
+执行一次</font></li>
+<li><font size="4"> 0 0 4-8 * * ? 每日的 4-8点
+每小时<strong>整点</strong>执行一次</font></li>
+<li><font size="4"> 0 0 2 * * ? 每日的 2点 执行一次</font></li>
+<li><font size="4"> 0 0 2 1 * ? 每月 1号2点 执行一次</font></li>
+</ul>
+<h2 id="cron表达式生成器">cron表达式生成器</h2>
+<ul>
+<li><a href="https://www.bejson.com/othertools/cron/">Cron表达式生成器</a></li>
+<li><a href="https://cron.qqe2.com/">在线Cron表达式生成器</a></li>
+<li><a href="https://www.toolzl.com/tools/croncreate.html">Crontab表达式生成器</a></li>
+</ul>
+<p>参考链接</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/9d18039c0f08">SpringBoot定时任务@EnableScheduling</a></li>
+<li><a href="https://blog.csdn.net/sinat_32023305/article/details/81281282">Spring
+<span class="citation" data-cites="EnableScheduling">@EnableScheduling</span> 注解解析</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/163050320">定时任务的cron表达式</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂七杂八 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> EnableScheduling </tag>
+            
+            <tag> cron </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SpringBoot-CommandLineRunner使用详解]]></title>
       <url>/articles/SpringBoot-CommandLineRunner%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h1 id="问题背景">问题背景</h1>
@@ -794,7 +935,7 @@ Complexity)S(n)\)</span>定义为该算法所耗费的存储空间，它也是�
 <li>若形参为引用方式，则也只需要为其分配存储一个地址的空间，用它来存储对应实参变量的地址，以便由系统自动引用实参变量</li>
 </ul>
 <h1 id="常用的排序算法的时间复杂度和空间复杂度">常用的排序算法的时间复杂度和空间复杂度</h1>
-<p><img src="/.com//../../img/posts_img/什么是算法/常用的排序算法的时间复杂度和空间复杂度.png"></p>
+<p><img src="/.com//../../img/posts_img/什么是算法/各种常用排序算法.jpg"></p>
 <p>参考链接</p>
 <ul>
 <li><a href="https://blog.csdn.net/zolalad/article/details/11848739?spm">算法的时间复杂度和空间复杂度-总结</a></li>
