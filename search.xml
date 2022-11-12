@@ -7,7 +7,7 @@
       <url>/articles/SpringBoot%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1@EnableScheduling%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%B8%8Ecron%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       <content type="html"><![CDATA[<!-- <font size=4></font> -->
 <h1 id="前言">前言</h1>
-<h2 id="定时任务是作用">定时任务是作用？</h2>
+<h2 id="定时任务的作用">定时任务的作用？</h2>
 <p><font size="4">定时任务相当于闹钟，在什么时间做什么事情（执行什么命令/脚本）</font></p>
 <h2 id="定时任务的实现">定时任务的实现？</h2>
 <p><font size="4">定时任务的实现方式有很多，比如XXL-Job等。但是其实核心功能和概念都是类似的，很多情况下只是调用的API不同而已</font></p>
