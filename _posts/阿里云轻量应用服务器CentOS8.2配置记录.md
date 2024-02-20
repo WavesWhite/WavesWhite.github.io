@@ -1,16 +1,19 @@
 ---
 title: 阿里云轻量应用服务器CentOS8.2配置记录
-top_img: https://get.wallhere.com/photo/1920x1200-px-Agil-anime-anime-girls-Asada-Shino-Ayano-Keiko-Kirigaya-Kazuto-Kirigaya-Suguha-manga-Mills-Andrew-Gilbert-Shinozaki-Rika-Sword-Art-Online-Tsuboi-Ryotaro-Yuuki-Asuna-1107926.jpg # 顶部图
-cover: https://get.wallhere.com/photo/1500x1060-px-animal-boat-building-cat-clouds-dog-Hana-male-Nama-original-Penguin-scenic-sky-water-1904667.jpg # 覆盖图
-top: false # 置顶
-tags:  # 标签
-    - Linux
-    - CentOS8
-categories: # 分类
-    - Linux
-date: 2024/1/11 17:45:26 # 创作日期
-copyright_author: 白浪 # 作者名字
+top_img: >-
+  https://get.wallhere.com/photo/1920x1200-px-Agil-anime-anime-girls-Asada-Shino-Ayano-Keiko-Kirigaya-Kazuto-Kirigaya-Suguha-manga-Mills-Andrew-Gilbert-Shinozaki-Rika-Sword-Art-Online-Tsuboi-Ryotaro-Yuuki-Asuna-1107926.jpg
+cover: >-
+  https://get.wallhere.com/photo/1500x1060-px-animal-boat-building-cat-clouds-dog-Hana-male-Nama-original-Penguin-scenic-sky-water-1904667.jpg
+top: false
+tags:
+  - Linux
+  - CentOS8
+categories:
+  - Linux
+date: '2024/1/11 17:45:26'
+copyright_author: 白浪
 copyright_info: 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+abbrlink: d565577d
 ---
 
 # 重置密码
